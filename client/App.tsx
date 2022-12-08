@@ -3,9 +3,9 @@ import React from "react";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { useCachedResources, Navigation, Layout } from "./src";
+import { useCachedResources, Navigation, ThemeProvider } from "./src";
 
-export const App = () => {
+const App = () => {
   const isLoadingComplete = useCachedResources();
 
   if (!isLoadingComplete) {
@@ -14,9 +14,9 @@ export const App = () => {
     return (
       <RootSiblingParent>
         <SafeAreaProvider>
-          <Layout>
-          <Navigation />
-          </Layout>
+          <ThemeProvider>
+            <Navigation />
+          </ThemeProvider>
           <StatusBar />
         </SafeAreaProvider>
       </RootSiblingParent>
