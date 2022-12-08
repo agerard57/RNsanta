@@ -11,7 +11,6 @@ export const Header: FC = () => {
       }}
     >
       <Text>Santa's Hood</Text>
-
       <Image
         source={{
           uri: "https://www.deviantart.com/turnip007/art/FREE-Padoru-Base-PSD-OPEN-824931031",
