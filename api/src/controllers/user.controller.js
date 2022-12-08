@@ -49,6 +49,8 @@ exports.getOne = (req, res) => {
 // Add controller
 exports.add = (req, res) => {
   const user = new UserModel(UserOptions(req.body));
+  user.populate({"profilePicNumber": generatePictureProfileNumber()});
+
   user
     .save()
     .then((_message) => {
@@ -58,3 +60,14 @@ exports.add = (req, res) => {
       res.status(500).json("An error occurred!");
     });
 };
+
+
+// ////////////////
+// Login controller
+exports.login = (req, res) => {
+  const login = req.body;
+
+  UserModel.find({"mail": login.mail}).then((user) =>
+    user.password == login.password ? res.json(user) : res.status(401)
+  );
+}
