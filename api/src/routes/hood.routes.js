@@ -1,15 +1,19 @@
 const hoodController = require("../controllers/hood.controller");
 
 module.exports = function (app) {
-  // GET all hoods / POST new hood
+  // POST create hood / PUT update hood
   app
-    .route("/hoods")
-    .get(hoodController.getAll)
-    .post(hoodController.add);
+    .route("/hood")
+    .post(hoodController.createHood)
+    .put(hoodController.updateHood);
+
+  // GET all hoods by userId / POST new hood
+  app
+    .route("/hoods/:id([0-9a-f]{24})")
+    .get(hoodController.getAllHoodsByUserId);
 
   // GET hood by id / Put hood
   app
     .route("/hood/:id([0-9a-f]{24})")
-    .get(hoodController.getOne)
-    .put(hoodController.update);
+    .get(hoodController.getHoodById);
 };

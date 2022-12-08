@@ -1,6 +1,12 @@
 const userController = require("../controllers/user.controller");
 
 module.exports = function (app) {
+  // GET user login
+  app.
+    route("/user")
+    .get(userController.login);
+
+    
   // GET all users / POST new user
   app
     .route("/users")

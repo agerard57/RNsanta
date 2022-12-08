@@ -12,5 +12,6 @@ module.exports = function routes(app) {
   // ///////
   // Routes
   require("./user.routes")(app);
+  require("./gift.routes")(app);
   require("./hood.routes")(app);
 };
