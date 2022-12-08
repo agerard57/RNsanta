@@ -1,3 +1,3 @@
-export { Navbar } from "./Navbar";
+export { Navbar } from "./navbar/Navbar";
 export { Header } from "./Header";
 export { RedBackground } from "./RedBackground";

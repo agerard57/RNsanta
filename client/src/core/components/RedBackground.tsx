@@ -1,18 +1,19 @@
-import { FC, ReactNode } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { FC } from "react";
+import { StyleSheet } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
-type Props = {
-  children: ReactNode;
-};
-
-export const RedBackground: FC<Props> = ({ children }) => (
-  <View style={styles.container}>{children}</View>
+export const RedBackground: FC = () => (
+  <LinearGradient colors={["#F7484C", "#F17A7C"]} style={styles.container} />
 );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
+    zIndex: -1,
   },
 });
