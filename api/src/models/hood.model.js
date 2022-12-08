@@ -1,11 +1,5 @@
 const mongoose = require("mongoose");
 
-const giftSchema = new mongoose.Schema({
-    name: String,
-    price: Number,
-    url: String
-});
-
 const HoodSchema = mongoose.Schema(
   {
     name: {
@@ -18,11 +12,13 @@ const HoodSchema = mongoose.Schema(
     },
     gifts: [{
       userId: {
-        type: String,
+        type: "ObjectId",
         ref: "user",
-        required: true,
       },
-      gift: [ giftSchema ]
+      giftId: [{
+        type: "ObjectId",
+        ref: "gift",
+      }],
     }],
   },
   { toJSON: { getters: true } }

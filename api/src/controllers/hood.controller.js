@@ -7,11 +7,6 @@ const hoodOptions = (request) => {
     hexColor: request.hexColor,
     gifts: [{
       userId: request.userId,
-      gift: [{
-        name: request.name,
-        price: request.price,
-        url: request.url
-      }]
     }], 
   }
 }
