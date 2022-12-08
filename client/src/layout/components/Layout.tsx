@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Header, Navbar } from "../../core";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const Layout: FC<Props> = ({ children }) => {
