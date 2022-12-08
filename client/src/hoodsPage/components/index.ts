@@ -1,0 +1,1 @@
+export { HoodsPage } from "./HoodsPage";
