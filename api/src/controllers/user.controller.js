@@ -1,5 +1,4 @@
 const UserModel = require("../models/user.model");
-const path = require("path");
 
 const UserOptions = (request) => {
   return {
@@ -9,8 +8,18 @@ const UserOptions = (request) => {
     },
     mail: request.mail,
     password: request.password,
-    profilePicNumber: request.profilePicNumber,   
   }
+}
+
+// TODO improve security of login
+
+const generatePictureProfileNumber = () => {
+  const max = 5;
+  const min = 0;
+
+  return Math.floor(
+    Math.random() * (max - min) + min
+  )
 }
 
 // //////////////////
