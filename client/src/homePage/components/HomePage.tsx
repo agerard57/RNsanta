@@ -1,24 +1,70 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { Text, View, Image } from "react-native";
+import { ThemeContext } from "../../theme";
 
 export const HomePage: FC = () => {
+  const theme = useContext(ThemeContext);
+
   return (
     <View
-    /* style={{
-        flex: 1,
+      style={{
+        paddingHorizontal: 16,
         alignItems: "center",
-        justifyContent: "center",
-      }} */
+        backgroundColor: "transparent",
+      }}
     >
-      <Image
-        source={{
-          uri: "https://cdn.discordapp.com/attachments/645576865850982420/1050042119475179532/6111414.png",
-        }}
+      <View
         style={{
-          width: 400,
-          height: 200,
+          flex: 1,
+          width: "100%",
+          borderRadius: 39,
+          paddingVertical: 20,
+          marginBottom: 40,
+          alignItems: "center",
+          backgroundColor: theme && theme.colors.cream,
         }}
-      />
+      >
+        <Image
+          source={{
+            uri: "https://cdn.discordapp.com/attachments/645576865850982420/1050042119475179532/6111414.png",
+          }}
+          style={{
+            width: "100%",
+            height: "100%",
+            resizeMode: "contain",
+          }}
+        />
+      </View>
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 24,
+            fontFamily: theme && theme.fonts.bold,
+            color: theme.colors.white,
+            textAlign: "center",
+            paddingBottom: 33,
+          }}
+        >
+          Welcome to Santa’s Hood, Parodu!
+        </Text>
+        <Text
+          style={{
+            fontSize: 18,
+            fontFamily: theme && theme.fonts.regular,
+            color: theme.colors.white,
+            textAlign: "justify",
+            paddingHorizontal: 20,
+          }}
+        >
+          This wonderful app will help you and your relatives list the perfect
+          presents for Christmas.{"\n\n"}No more hassle in finding your perfect
+          gift!
+        </Text>
+      </View>
     </View>
   );
 };
