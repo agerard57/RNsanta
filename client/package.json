@@ -13,6 +13,8 @@
     "@react-navigation/native": "^6.1.0",
     "@react-navigation/native-stack": "^6.9.5",
     "expo": "~47.0.8",
+    "expo-font": "~11.0.1",
+    "expo-linear-gradient": "~12.0.1",
     "expo-splash-screen": "^0.17.5",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.70.6",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
