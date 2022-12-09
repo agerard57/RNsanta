@@ -6,7 +6,8 @@ export const getHoodsList = async (id: string) => {
 
   try {
     const response = await publicAxios.get(url(id));
-    return await response.data;
+    if (response.status === 200) return await response.data;
+    else return [];
   } catch (error) {
     return [];
   }
