@@ -4,12 +4,12 @@ const UserOptions = (request) => {
   return {
     name: {
       firstName: request.firstName,
-      lastName: request.lastName
+      lastName: request.lastName,
     },
     mail: request.mail,
     password: request.password,
-  }
-}
+  };
+};
 
 // TODO improve security of login
 
@@ -17,10 +17,8 @@ const generatePictureProfileNumber = () => {
   const max = 5;
   const min = 0;
 
-  return Math.floor(
-    Math.random() * (max - min) + min
-  )
-}
+  return Math.floor(Math.random() * (max - min) + min);
+};
 
 // //////////////////
 // Get all controller
@@ -35,7 +33,8 @@ exports.getAll = (_req, res) => {
 exports.getOne = (req, res) => {
   const id = req.params.id;
 
-  UserModel.findById(id).then((user) => {
+  UserModel.findById(id)
+    .then((user) => {
       res.json(user);
     })
     .catch((error) => {
@@ -49,7 +48,7 @@ exports.getOne = (req, res) => {
 // Add controller
 exports.add = (req, res) => {
   const user = new UserModel(UserOptions(req.body));
-  user.populate({"profilePicNumber": generatePictureProfileNumber()});
+  user.populate({ profilePicNumber: generatePictureProfileNumber() });
 
   user
     .save()
@@ -61,29 +60,29 @@ exports.add = (req, res) => {
     });
 };
 
-
 // ////////////////
 // Login controller
 exports.login = (req, res) => {
   const mail = req.body.mail;
   const password = req.body.password;
 
-  UserModel.findOne({mail: mail}).then((user) => {
-
+  UserModel.findOne({ mail: mail }).then((user) => {
     if (user.password == password) {
-      res.status(200).send({
-        "user": {
-          "id": user._id,
-          "name": {
-            "firstName": user.name.firstName,
-            "lastName": user.name.lastName,
+      res.status(200);
+      res.send({
+        data: {
+          user: {
+            id: user._id,
+            name: {
+              firstName: user.name.firstName,
+              lastName: user.name.lastName,
+            },
+            profilePicNumber: user.profilePicNumber,
           },
-          "profilePicNumber": user.profilePicNumber,
-        }
+        },
       });
-    }
-    else {
+    } else {
       res.status(401).send();
     }
   });
-}
+};
