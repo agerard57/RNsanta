@@ -1,15 +1,10 @@
 const userController = require("../controllers/user.controller");
-const checkLogin = require("../middlewares/checkLogin");
 
 module.exports = function (app) {
   // POST user login
   app
     .route("/user/login")
-    .post([
-      checkLogin.checkMail,
-      checkLogin.checkPasswordSyntax,
-      checkLogin.checkUserExistsAndValidPassword
-    ], userController.login);
+    .post( userController.login);
 
   // GET all users
   app

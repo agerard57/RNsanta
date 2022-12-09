@@ -21,7 +21,7 @@ export const useRegisterPage: UseRegisterPageManager = () => {
     confirmPassword: "",
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (
       userValue.mail &&
       userValue.password &&
@@ -35,7 +35,7 @@ export const useRegisterPage: UseRegisterPageManager = () => {
         userValue.lastName,
         userValue.mail,
         userValue.password
-      ).then(async (response) => {
+      ).then((response) => {
         if (response.status === 200) {
           navigation.navigate("Home");
         }

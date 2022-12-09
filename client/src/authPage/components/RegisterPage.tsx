@@ -88,7 +88,7 @@ const styles = (theme?: ThemeType) =>
       justifyContent: "center",
       width: "100%",
       borderRadius: 39,
-      paddingVertical: 16,
+      paddingBottom: 16,
       padding: 0,
     },
     addButtonTextTop: {
@@ -114,7 +114,6 @@ const styles = (theme?: ThemeType) =>
       fontFamily: theme && theme.fonts.semiBold,
     },
     container: {
-      marginTop: "2rem",
       width: "100%",
       borderRadius: 39,
       alignItems: "flex-start",

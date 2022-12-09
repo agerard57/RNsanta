@@ -19,7 +19,7 @@ export const useLoginPage: UseLoginPageManager = () => {
     password: "",
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (userValue.mail && userValue.password) {
       postLogin(userValue.mail, userValue.password).then(async (response) => {
         if (response.status === 200) {
@@ -27,7 +27,7 @@ export const useLoginPage: UseLoginPageManager = () => {
           const dataJSON = JSON.stringify(response.data.user);
 
           await AsyncStorage.setItem("user", dataJSON).then(() => {
-            navigation.navigate("Home");
+            navigation.navigate("Login");
           });
         }
       });
