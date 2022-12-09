@@ -6,8 +6,6 @@ const GiftSchema = mongoose.Schema({
     url: String
 });
 
-GiftSchema.index({ id: 1 }, { unique: true });
-
 const GiftModel = mongoose.model("gift", GiftSchema);
 
 module.exports = GiftModel;

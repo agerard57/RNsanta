@@ -33,8 +33,6 @@ const UserSchema = mongoose.Schema(
   { toJSON: { getters: true } }
 );
 
-UserSchema.index({ id: 1 }, { unique: true });
-
 const UserModel = mongoose.model("user", UserSchema);
 
 module.exports = UserModel;
