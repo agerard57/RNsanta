@@ -6,7 +6,7 @@ import { HomePage } from "../../homePage";
 import { HoodDetailsPage } from "../../hoodDetailsPage";
 import { HoodsPage } from "../../hoodsPage";
 import { Layout } from "../../layout";
-import { LoginPage, RegisterPage } from "../../authPage";
+import { LoginPage, RegisterPage } from "../../authPages";
 import { RootTabParamList } from "../../types";
 import { LinkingConfiguration } from "./LinkingConfiguration";
 import { View, StyleSheet } from "react-native";
@@ -73,5 +73,5 @@ const styles = (theme?: ThemeType) =>
     view: {
       overflow: "scroll",
       flex: 1,
-    }
+    },
   });
