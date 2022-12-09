@@ -7,7 +7,6 @@ import { useLoginPage } from "../hooks/useLoginPage";
 
 export const LoginPage: FC = () => {
   const theme = useContext(ThemeContext);
-
   const { userValue, setUserValue, handleSubmit } = useLoginPage();
 
   return (
@@ -18,13 +17,13 @@ export const LoginPage: FC = () => {
 
       <Container additionalStyling={styles().container}>
         <Input
-          label="Mail :"
+          label="Email :"
           textInputParams={{
             textContentType: "emailAddress",
             autoComplete: "email",
           }}
           updateInputValue={(text) =>
-            setUserValue({ ...userValue, mail: text })
+            setUserValue({ ...userValue, email: text })
           }
         />
         <Input
@@ -38,7 +37,10 @@ export const LoginPage: FC = () => {
             setUserValue({ ...userValue, password: text })
           }
         />
-        <TouchableOpacity onPress={() => handleSubmit()} style={styles().loginButtonContainer}>
+        <TouchableOpacity
+          onPress={() => handleSubmit()}
+          style={styles().loginButtonContainer}
+        >
           <Container additionalStyling={styles(theme).loginButton}>
             <Text style={styles(theme).loginButtonText}>Login</Text>
           </Container>

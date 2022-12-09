@@ -16,14 +16,14 @@ export const useRegisterPage: UseRegisterPageManager = () => {
   const [userValue, setUserValue] = useState<InputRegisterType>({
     firstName: "",
     lastName: "",
-    mail: "",
+    email: "",
     password: "",
     confirmPassword: "",
   });
 
   const handleSubmit = () => {
     if (
-      userValue.mail &&
+      userValue.email &&
       userValue.password &&
       userValue.confirmPassword &&
       userValue.firstName &&
@@ -33,7 +33,7 @@ export const useRegisterPage: UseRegisterPageManager = () => {
       postUser(
         userValue.firstName,
         userValue.lastName,
-        userValue.mail,
+        userValue.email,
         userValue.password
       ).then((response) => {
         if (response.status === 200) {

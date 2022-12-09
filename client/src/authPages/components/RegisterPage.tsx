@@ -7,7 +7,6 @@ import { useRegisterPage } from "../hooks";
 
 export const RegisterPage: FC = () => {
   const theme = useContext(ThemeContext);
-
   const { userValue, setUserValue, handleSubmit } = useRegisterPage();
 
   return (
@@ -36,14 +35,14 @@ export const RegisterPage: FC = () => {
           }
         />
         <Input
-          label="Mail :"
+          label="Email :"
           textInputParams={{
             textContentType: "emailAddress",
             autoComplete: "email",
             keyboardType: "email-address",
           }}
           updateInputValue={(text) =>
-            setUserValue({ ...userValue, mail: text })
+            setUserValue({ ...userValue, email: text })
           }
         />
         <Input
