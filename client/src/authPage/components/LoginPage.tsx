@@ -11,8 +11,7 @@ export const LoginPage: FC = () => {
   const theme = useContext(ThemeContext);
   const navigation = useNavigation();
   
-  const [mailValue, setMailValue] = useState<String>("");
-  const [passwordValue, setPasswordValue] = useState<String>("");
+  const { userValue, setUserValue, handleSubmit } = useLoginPage();
 
   return (
     <View
@@ -26,24 +25,15 @@ export const LoginPage: FC = () => {
         <Text style={styles(theme).addButtonTextTop}>Register</Text>
       </TopButton>
 
-      <Container
-        additionalStyling={{
-          marginTop: "2rem",
-          width: "100%",
-          borderRadius: 39,
-          alignItems: "flex-start"
-      }}>
-        <Input label="Mail :" 
-          inputValue={mailValue} updateInputValue={setMailValue}
+          updateInputValue={(text) =>
+            setUserValue({ ...userValue, mail: text })
+          }
         />
-        <Input label="Password :" 
-          textInputParams={{textContentType: "password", secureTextEntry: true}}
-          inputValue={passwordValue} updateInputValue={setPasswordValue}
+          updateInputValue={(text) =>
+            setUserValue({ ...userValue, password: text })
+          }
         />
-        <TouchableOpacity
-          onPress={() => useLoginPage(mailValue, passwordValue)}
-          style={{width: "100%"}}
-        >
+        <TouchableOpacity onPress={() => handleSubmit()}>
           <Container additionalStyling={styles(theme).loginButton}>
             <Text style={styles(theme).loginButtonText}>Login</Text>
           </Container>
