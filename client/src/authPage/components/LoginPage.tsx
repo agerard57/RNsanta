@@ -21,12 +21,21 @@ export const LoginPage: FC = () => {
       <Container additionalStyling={styles().container}>
         <Input
           label="Mail :"
+          textInputParams={{
+            textContentType: "emailAddress",
+            autoComplete: "email",
+          }}
           updateInputValue={(text) =>
             setUserValue({ ...userValue, mail: text })
           }
         />
         <Input
           label="Password :"
+          textInputParams={{
+            textContentType: "password",
+            secureTextEntry: true,
+            autoComplete: "password",
+          }}
           updateInputValue={(text) =>
             setUserValue({ ...userValue, password: text })
           }
