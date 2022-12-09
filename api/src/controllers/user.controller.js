@@ -48,12 +48,12 @@ exports.getOne = (req, res) => {
 // Add controller
 exports.add = (req, res) => {
   const user = new UserModel(UserOptions(req.body));
-  user.populate({ profilePicNumber: generatePictureProfileNumber() });
+  user.profilePicNumber = generatePictureProfileNumber();
 
   user
     .save()
     .then((_message) => {
-      res.json("Your user has been added!");
+      res.status(200).json("Your user has been added!");
     })
     .catch((_error) => {
       res.status(500).json("An error occurred!");
