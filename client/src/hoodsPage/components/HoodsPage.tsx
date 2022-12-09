@@ -7,7 +7,10 @@ import { useHoodsPage } from "../hooks";
 import { HoodListElement } from "./HoodListElement";
 
 export const HoodsPage: FC = () => {
-  const { hoods } = useHoodsPage();
+  // Placeholder for userId
+  const userId = "6391ee3458827b959ba18363";
+
+  const { hoods } = useHoodsPage(userId);
   const theme = useContext(ThemeContext);
 
   const Separator: FC<{ theme: ThemeType }> = ({ theme }) => (

@@ -3,15 +3,15 @@ import { useState, useEffect } from "react";
 import { getHoodsList } from "../services";
 import { HoodsType } from "../types";
 
-type useUseHoodsPage = () => {
+type useHoodsPageManager = (userId: string) => {
   hoods: HoodsType[];
 };
 
-export const useHoodsPage: useUseHoodsPage = () => {
+export const useHoodsPage: useHoodsPageManager = (userId) => {
   const [hoods, setHoods] = useState<HoodsType[] | []>([]);
 
   useEffect(() => {
-    getHoodsList("6391ee3458827b959ba18363").then((hoods) => {
+    getHoodsList(userId).then((hoods) => {
       setHoods(hoods);
     });
   }, []);

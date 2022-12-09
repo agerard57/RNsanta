@@ -1,16 +1,8 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { FC, useContext } from "react";
-import {
-  View,
-  StyleSheet,
-  Button,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import { ThemeType } from "../../../theme";
 import { ThemeContext } from "../../../theme/contexts";
-import { NavbarIcons } from "../../assets";
 import { NavbarBackground } from "./NavbarBackground";
 import { TouchableIcon } from "./TouchableIcon";
 

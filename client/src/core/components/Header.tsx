@@ -13,6 +13,7 @@ export const Header: FC = (props) => {
         <Text style={styles(theme).userName}>Padoru</Text>
         <Image
           source={{
+            // We use a placeholder image here, this'll be replaced with a user's profile picture later on
             uri: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/4236d1d9-6a66-4488-ab28-bf744b693173/ddn54uv-2d9156a6-6e13-45f4-a2f5-e0c8fb637418.jpg",
           }}
           style={styles().profilePic}

@@ -25,6 +25,7 @@ export const HomePage: FC = () => {
       >
         <Image
           source={{
+            // This is a placeholder image for now
             uri: "https://cdn.discordapp.com/attachments/645576865850982420/1050042119475179532/6111414.png",
           }}
           style={{
