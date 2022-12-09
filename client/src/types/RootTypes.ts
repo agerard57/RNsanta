@@ -11,5 +11,4 @@ export type RootTabParamList = {
   Register: undefined;
   Clock: undefined;
   HoodDetails: { id: string };
-  //"todo-edit": { id: string };
 };
