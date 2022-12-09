@@ -33,6 +33,6 @@ const UserSchema = mongoose.Schema(
   { toJSON: { getters: true } }
 );
 
-const UserModel = mongoose.model("user", UserSchema);
+const UserModel = mongoose.model("user", UserSchema, "user");
 
 module.exports = UserModel;

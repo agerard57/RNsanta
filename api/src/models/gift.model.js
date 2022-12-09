@@ -6,6 +6,6 @@ const GiftSchema = mongoose.Schema({
     url: String
 });
 
-const GiftModel = mongoose.model("gift", GiftSchema);
+const GiftModel = mongoose.model("gift", GiftSchema, "gift");
 
 module.exports = GiftModel;
