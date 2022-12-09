@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { FC } from "react";
-import { StyleProp, TouchableOpacity, View, ViewStyle } from "react-native";
+import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
 import { RootTabParamList } from "../../types";
 import { Container } from "./Container";
 
@@ -22,7 +22,9 @@ export const TopButton: FC<Props> = ({
       style={additionalStyling}
       onPress={() => navigation.navigate(route)}
     >
-      <Container additionalStyling={additionalStyling}>{children}</Container>
+      <Container additionalStyling={[additionalStyling, { paddingTop: 16 }]}>
+        {children}
+      </Container>
     </TouchableOpacity>
   );
 };

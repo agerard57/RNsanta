@@ -1,9 +1,9 @@
 import { Home } from "./Home";
-import { Hood } from "./Hood";
+import { Hoods } from "./Hoods";
 import { Clock } from "./Clock";
 
 export const NavbarIcons = {
-  Home,
-  Hood,
-  Clock,
+  Home: Home,
+  Hoods: Hoods,
+  Clock: Clock,
 };

@@ -10,13 +10,7 @@ export const HoodsPage: FC = () => {
   const theme = useContext(ThemeContext);
 
   const Separator: FC<{ theme: ThemeType }> = ({ theme }) => (
-    <View
-      style={{
-        height: 1,
-        width: "100%",
-        backgroundColor: theme.colors.grey,
-      }}
-    />
+    <View style={styles(theme).separator} />
   );
 
   return (
@@ -51,7 +45,7 @@ const styles = (theme?: ThemeType) =>
       justifyContent: "center",
       width: "100%",
       borderRadius: 39,
-      paddingVertical: 16,
+      paddingBottom: 16,
       padding: 0,
     },
     addButtonText: {

@@ -11,23 +11,17 @@ import { NavbarBackground } from "./NavbarBackground";
 import { ThemeType } from "../../../theme";
 import { useNavigation } from "@react-navigation/native";
 import { NavbarIcons } from "../../assets";
+import { TouchableIcon } from "./TouchableIcon";
 
 export const Navbar: FC = () => {
   const theme = useContext(ThemeContext);
-  const navigation = useNavigation();
 
   return (
     <>
       <View
         style={[styles({ size: 42, theme }).commonButtonBg, { left: "25%" }]}
       >
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Hoods");
-          }}
-        >
-          <NavbarIcons.Home />
-        </TouchableOpacity>
+        <TouchableIcon route="Home" />
       </View>
       <View
         style={[
@@ -35,24 +29,12 @@ export const Navbar: FC = () => {
           { marginLeft: "auto", marginRight: "auto", left: 0, right: 0 },
         ]}
       >
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Hoods");
-          }}
-        >
-          <NavbarIcons.Hood />
-        </TouchableOpacity>
+        <TouchableIcon route="Hoods" />
       </View>
       <View
         style={[styles({ size: 42, theme }).commonButtonBg, { right: "25%" }]}
       >
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Hoods");
-          }}
-        >
-          <NavbarIcons.Clock />
-        </TouchableOpacity>
+        <TouchableIcon route="Clock" />
       </View>
       <NavbarBackground />
     </>
