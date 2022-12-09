@@ -26,7 +26,7 @@ export const Navbar: FC = () => {
             navigation.navigate("Hoods");
           }}
         >
-          <NavbarIcons.filled.Home />
+          <NavbarIcons.Home />
         </TouchableOpacity>
       </View>
       <View
@@ -40,7 +40,7 @@ export const Navbar: FC = () => {
             navigation.navigate("Hoods");
           }}
         >
-          <NavbarIcons.filled.Hood />
+          <NavbarIcons.Hood />
         </TouchableOpacity>
       </View>
       <View
@@ -51,7 +51,7 @@ export const Navbar: FC = () => {
             navigation.navigate("Hoods");
           }}
         >
-          <NavbarIcons.filled.Clock />
+          <NavbarIcons.Clock />
         </TouchableOpacity>
       </View>
       <NavbarBackground />

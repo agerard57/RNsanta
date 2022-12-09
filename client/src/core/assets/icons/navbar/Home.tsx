@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-export const FilledHome: FC = () => (
+export const Home: FC = () => (
   <svg
     width="19"
     height="19"

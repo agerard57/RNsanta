@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-export const FilledClock: FC = () => (
+export const Clock: FC = () => (
   <svg
     width="22"
     height="22"

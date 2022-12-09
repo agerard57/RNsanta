@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-export const FilledHood: FC = () => (
+export const Hood: FC = () => (
   <svg
     width="24"
     height="27"
