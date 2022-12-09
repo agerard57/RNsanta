@@ -1,1 +1,1 @@
-export { Header, Navbar, RedBackground } from "./components";
+export { Header, Navbar, RedBackground, Container } from "./components";

@@ -1,5 +1,6 @@
 import React, { FC, useContext } from "react";
 import { Text, View, Image } from "react-native";
+import { Container } from "../../core";
 import { ThemeContext } from "../../theme";
 
 export const HomePage: FC = () => {
@@ -13,15 +14,12 @@ export const HomePage: FC = () => {
         backgroundColor: "transparent",
       }}
     >
-      <View
-        style={{
-          flex: 1,
+      <Container
+        additionalStyling={{
           width: "100%",
           borderRadius: 39,
           paddingVertical: 20,
           marginBottom: 40,
-          alignItems: "center",
-          backgroundColor: theme && theme.colors.cream,
         }}
       >
         <Image
@@ -34,7 +32,7 @@ export const HomePage: FC = () => {
             resizeMode: "contain",
           }}
         />
-      </View>
+      </Container>
       <View
         style={{
           flex: 1,
