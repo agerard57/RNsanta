@@ -4,13 +4,11 @@ import { Text, View, FlatList, StyleSheet } from "react-native";
 import { Container, TopButton } from "../../core";
 import { ThemeContext, ThemeType } from "../../theme";
 import { useHoodsPage } from "../hooks";
+import { EmptyHoodList } from "./EmptyHoodList";
 import { HoodListElement } from "./HoodListElement";
 
 export const HoodsPage: FC = () => {
-  // Placeholder for userId
-  const userId = "6391ee3458827b959ba18363";
-
-  const { hoods } = useHoodsPage(userId);
+  const { hoods } = useHoodsPage();
   const theme = useContext(ThemeContext);
 
   const Separator: FC<{ theme: ThemeType }> = ({ theme }) => (
@@ -23,13 +21,17 @@ export const HoodsPage: FC = () => {
         <Text style={styles(theme).addButtonText}>Make a new hood</Text>
       </TopButton>
       <Container additionalStyling={styles().hoodList}>
-        <FlatList
-          style={styles().flatList}
-          data={hoods}
-          renderItem={({ item }) => <HoodListElement hood={item} />}
-          keyExtractor={(item) => item.name}
-          ItemSeparatorComponent={() => <Separator theme={theme} />}
-        />
+        {hoods.length === 0 ? (
+          <EmptyHoodList />
+        ) : (
+          <FlatList
+            style={styles().flatList}
+            data={hoods}
+            renderItem={({ item }) => <HoodListElement hood={item} />}
+            keyExtractor={(_item, index) => index.toString()}
+            ItemSeparatorComponent={() => <Separator theme={theme} />}
+          />
+        )}
       </Container>
     </View>
   );
