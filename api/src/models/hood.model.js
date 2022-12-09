@@ -15,10 +15,12 @@ const HoodSchema = mongoose.Schema(
         type: "ObjectId",
         ref: "user",
       },
-      giftId: [{
-        type: "ObjectId",
-        ref: "gift",
-      }],
+      gift: [
+        {
+          type: "ObjectId",
+          ref: "gift",
+        }
+      ],
     }],
   },
   { toJSON: { getters: true } }

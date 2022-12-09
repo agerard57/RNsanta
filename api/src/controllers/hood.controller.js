@@ -34,7 +34,7 @@ exports.getHoodById = (req, res) => {
   const hoodId = req.params.id;
 
   HoodModel.findById(hoodId)
-    .populate("gifts.userId")
+    .populate("gifts.userId", "name profilePicNumber")
     .populate("gifts.gift")
     .then((hood) => {
       res.json(hood);

@@ -6,7 +6,7 @@ const UserOptions = (request) => {
       firstName: request.firstName,
       lastName: request.lastName,
     },
-    mail: request.mail,
+    email: request.email,
     password: request.password,
   };
 };
@@ -63,10 +63,10 @@ exports.add = (req, res) => {
 // ////////////////
 // Login controller
 exports.login = (req, res) => {
-  const mail = req.body.mail;
+  const email = req.body.email;
   const password = req.body.password;
 
-  UserModel.findOne({ mail: mail }).then((user) => {
+  UserModel.findOne({ email: email }).then((user) => {
     if (user.password == password) {
       res.status(200);
       res.send({
