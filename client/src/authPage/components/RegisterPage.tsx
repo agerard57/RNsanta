@@ -1,76 +1,128 @@
 import React, { FC, useContext } from "react";
-import { Text, View, Image, TouchableWithoutFeedback } from "react-native";
-import { Container } from "../../core";
-import { ThemeContext } from "../../theme";
-import { useNavigation } from "@react-navigation/native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+
+import { Container, Input, TopButton } from "../../core";
+import { ThemeContext, ThemeType } from "../../theme";
+import { useRegisterPage } from "../hooks";
 
 export const RegisterPage: FC = () => {
   const theme = useContext(ThemeContext);
-  const navigation = useNavigation();
+
+  const { userValue, setUserValue, handleSubmit } = useRegisterPage();
 
   return (
-    <View
-      style={{
-        paddingHorizontal: 16,
-        alignItems: "center",
-        backgroundColor: "transparent",
-      }}
-    >
-      <TouchableWithoutFeedback
-        onPress={() => {navigation.navigate("Register")}}>
-        <Container
-          additionalStyling={{
-            width: "100%",
-            borderRadius: 39,
-            height: "auto",
-            flex: 0.25,
-            paddingTop: 9,
-            paddingBottom: 10,
+    <View style={styles().view}>
+      <TopButton additionalStyling={styles().addButton} route={"Login"}>
+        <Text style={styles(theme).addButtonTextTop}>Login</Text>
+      </TopButton>
+
+      <Container additionalStyling={styles().container}>
+        <Input
+          label="First name :"
+          textInputParams={{
+            autoComplete: "name",
           }}
-        >
-          <Text
-            style={{
-              fontSize: 24,
-              fontFamily: theme && theme.fonts.bold,
-              color: theme.colors.black,
-              textAlign: "center",
-            }}
-            >Login
-          </Text>
-        </Container>
-      </TouchableWithoutFeedback>
-
-
-
-
-
-      <View
-        style={{
-          flex: 1,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 24,
-            fontFamily: theme && theme.fonts.bold,
-            color: theme.colors.white,
-            textAlign: "center",
-            paddingBottom: 33,
+          updateInputValue={(text) =>
+            setUserValue({ ...userValue, firstName: text })
+          }
+        />
+        <Input
+          label="Last name :"
+          textInputParams={{
+            autoComplete: "name-family",
           }}
-        >
-        </Text>
-        <Text
-          style={{
-            fontSize: 18,
-            fontFamily: theme && theme.fonts.regular,
-            color: theme.colors.white,
-            textAlign: "justify",
-            paddingHorizontal: 20,
+          updateInputValue={(text) =>
+            setUserValue({ ...userValue, lastName: text })
+          }
+        />
+        <Input
+          label="Mail :"
+          textInputParams={{
+            textContentType: "emailAddress",
+            autoComplete: "email",
+            keyboardType: "email-address",
           }}
+          updateInputValue={(text) =>
+            setUserValue({ ...userValue, mail: text })
+          }
+        />
+        <Input
+          label="Password :"
+          textInputParams={{
+            textContentType: "password",
+            secureTextEntry: true,
+            autoComplete: "password",
+          }}
+          updateInputValue={(text) =>
+            setUserValue({ ...userValue, password: text })
+          }
+        />
+        <Input
+          label="Confirm password :"
+          textInputParams={{
+            textContentType: "password",
+            secureTextEntry: true,
+            autoComplete: "password",
+          }}
+          updateInputValue={(text) =>
+            setUserValue({ ...userValue, confirmPassword: text })
+          }
+        />
+        <TouchableOpacity
+          onPress={() => handleSubmit()}
+          style={styles().registerButtonContainer}
         >
-          Registration page
-        </Text>
-      </View>
+          <Container additionalStyling={styles(theme).registerButton}>
+            <Text style={styles(theme).registerButtonText}>Register</Text>
+          </Container>
+        </TouchableOpacity>
+      </Container>
     </View>
   );
 };
+
+const styles = (theme?: ThemeType) =>
+  StyleSheet.create({
+    addButton: {
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      borderRadius: 39,
+      paddingVertical: 16,
+      padding: 0,
+    },
+    addButtonTextTop: {
+      fontSize: 24,
+      fontFamily: theme && theme.fonts.extraBold,
+      color: theme && theme.colors.black,
+    },
+    registerButtonContainer: {
+      width: "100%",
+    },
+    registerButton: {
+      backgroundColor: theme && theme.colors.blue,
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      borderRadius: 39,
+      padding: 7,
+      marginTop: "2rem",
+    },
+    registerButtonText: {
+      color: "#FFFFFF",
+      fontSize: 20,
+      fontFamily: theme && theme.fonts.semiBold,
+    },
+    container: {
+      marginTop: "2rem",
+      width: "100%",
+      borderRadius: 39,
+      alignItems: "flex-start",
+    },
+    view: {
+      paddingHorizontal: 16,
+      alignItems: "center",
+      backgroundColor: "transparent",
+      marginBottom: "0.25rem",
+    },
+  });
