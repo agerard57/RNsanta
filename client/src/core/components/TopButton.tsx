@@ -1,11 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
+
 import { RootTabParamList } from "../../types";
 import { Container } from "./Container";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   additionalStyling?: StyleProp<ViewStyle>;
   route: keyof RootTabParamList;
 };
@@ -20,7 +21,7 @@ export const TopButton: FC<Props> = ({
   return (
     <TouchableOpacity
       style={additionalStyling}
-      onPress={() => navigation.navigate(route)}
+      onPress={() => navigation.navigate(route as any)}
     >
       <Container additionalStyling={[additionalStyling, { paddingTop: 16 }]}>
         {children}

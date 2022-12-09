@@ -1,5 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { FC, useContext } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { ThemeContext, ThemeType } from "../../theme";
 import { HoodsType } from "../types";
 
@@ -9,9 +10,13 @@ type Props = {
 
 export const HoodListElement: FC<Props> = ({ hood }) => {
   const theme = useContext(ThemeContext);
+  const navigation = useNavigation();
 
   return (
-    <View style={styles({}).elementContainer}>
+    <TouchableOpacity
+      style={styles({}).elementContainer}
+      onPress={() => navigation.navigate("HoodDetails", { id: hood.id })}
+    >
       <View style={styles({ hood }).coloredChip} />
       <View
         style={{
@@ -24,7 +29,7 @@ export const HoodListElement: FC<Props> = ({ hood }) => {
           {`${hood.nbMembers} Member${hood.nbMembers > 1 ? "s" : ""}`}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

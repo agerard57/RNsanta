@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { TouchableOpacity } from "react-native";
+
 import { RootTabParamList } from "../../../types";
 import { NavbarIcons } from "../../assets";
 
@@ -16,7 +17,7 @@ export const TouchableIcon = ({ route }: Props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate(route);
+        navigation.navigate(route as any);
       }}
     >
       <NavBarIcon />

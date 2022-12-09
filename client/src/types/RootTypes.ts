@@ -8,5 +8,6 @@ export type RootTabParamList = {
   Home: undefined;
   Hoods: undefined;
   Clock: undefined;
+  HoodDetails: { id: string };
   //"todo-edit": { id: string };
 };
