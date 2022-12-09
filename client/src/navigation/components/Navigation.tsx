@@ -6,6 +6,7 @@ import { HomePage } from "../../homePage";
 import { HoodDetailsPage } from "../../hoodDetailsPage";
 import { HoodsPage } from "../../hoodsPage";
 import { Layout } from "../../layout";
+import { LoginPage, RegisterPage } from "../../authPage";
 import { RootTabParamList } from "../../types";
 import { LinkingConfiguration } from "./LinkingConfiguration";
 
@@ -40,6 +41,16 @@ export const Navigation = () => {
           <Screen
             name="Clock"
             component={ClockPage}
+            options={{ headerShown: false }}
+          />
+          <Screen
+            name="Login"
+            component={LoginPage}
+            options={{ headerShown: false }}
+          />
+          <Screen
+            name="Register"
+            component={RegisterPage}
             options={{ headerShown: false }}
           />
           <Screen

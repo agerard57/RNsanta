@@ -1,14 +1,17 @@
 import React, { FC, useContext } from "react";
-import { Text, View, Image, StyleSheet } from "react-native";
-
+import { Text, View, Image, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { ThemeContext, ThemeType } from "../../theme";
+import { useNavigation } from "@react-navigation/native";
 
 export const Header: FC = (props) => {
   const theme = useContext(ThemeContext);
+  const navigation = useNavigation();
 
   return (
     <View style={styles().headerContainer}>
       <Text style={styles(theme).pageTitle}>Santa's Hood</Text>
+      <TouchableWithoutFeedback
+        onPress={() => {navigation.navigate("Login")}}></TouchableWithoutFeedback>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Text style={styles(theme).userName}>Padoru</Text>
         <Image
@@ -19,6 +22,7 @@ export const Header: FC = (props) => {
           style={styles().profilePic}
         />
       </View>
+            </TouchableWithoutFeedback>
     </View>
   );
 };

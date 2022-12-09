@@ -24,6 +24,6 @@ const HoodSchema = mongoose.Schema(
   { toJSON: { getters: true } }
 );
 
-const HoodModel = mongoose.model("hood", HoodSchema);
+const HoodModel = mongoose.model("hood", HoodSchema, "hoods");
 
 module.exports = HoodModel;

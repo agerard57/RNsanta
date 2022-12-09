@@ -65,9 +65,25 @@ exports.add = (req, res) => {
 // ////////////////
 // Login controller
 exports.login = (req, res) => {
-  const login = req.body;
+  const mail = req.body.mail;
+  const password = req.body.password;
 
-  UserModel.find({"mail": login.mail}).then((user) =>
-    user.password == login.password ? res.json(user) : res.status(401)
-  );
+  UserModel.findOne({mail: mail}).then((user) => {
+
+    if (user.password == password) {
+      res.status(200).send({
+        "user": {
+          "id": user._id,
+          "name": {
+            "firstName": user.name.firstName,
+            "lastName": user.name.lastName,
+          },
+          "profilePicNumber": user.profilePicNumber,
+        }
+      });
+    }
+    else {
+      res.status(401).send();
+    }
+  });
 }
