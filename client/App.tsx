@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import { StyleSheet } from "react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -13,7 +14,7 @@ const App = () => {
   } else {
     return (
       <RootSiblingParent>
-        <SafeAreaProvider>
+        <SafeAreaProvider style={styles.safeArea}>
           <ThemeProvider>
             <Navigation />
           </ThemeProvider>
@@ -23,5 +24,11 @@ const App = () => {
     );
   }
 };
+
+const styles = StyleSheet.create({
+  safeArea: {
+    overflow: "hidden",
+  },
+});
 
 export default App;
