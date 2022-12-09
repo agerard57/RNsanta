@@ -1,16 +1,38 @@
-import { useState, useEffect } from "react";
-import { getLogin } from "../services";
-import { LoginType } from "../types";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
+import { postLogin } from "../services";
+import { InputLoginType } from "../types";
 
-export const useLoginPage = (mail: String, password: String) => {
-  const [user, setUser] = useState();
+type UseLoginPageManager = () => {
+  userValue: InputLoginType;
+  setUserValue: React.Dispatch<React.SetStateAction<InputLoginType>>;
+  handleSubmit: () => void;
+};
 
-  useEffect(() => {
-    getLogin(mail, password).then((user) => {
-      setUser(user);
-    });
-  }, []);
+export const useLoginPage: UseLoginPageManager = () => {
+  const navigation = useNavigation();
 
-  return { user };
+  const [userValue, setUserValue] = useState<InputLoginType>({
+    mail: "",
+    password: "",
+  });
+
+  const handleSubmit = async () => {
+    if (userValue.mail && userValue.password) {
+      postLogin(userValue.mail, userValue.password).then(async (response) => {
+        if (response.status === 200) {
+          response.data.user.mail = userValue.mail;
+          const dataJSON = JSON.stringify(response.data.user);
+
+          await AsyncStorage.setItem("user", dataJSON).then(() => {
+            navigation.navigate("Home");
+          });
+        }
+      });
+    }
+  };
+
+  return { userValue, setUserValue, handleSubmit };
 };

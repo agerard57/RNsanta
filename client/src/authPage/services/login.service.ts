@@ -1,8 +1,10 @@
 import { publicAxios } from "../../core";
 
-export const getLogin = async (mail: String, password: String) => {
+export const postLogin = async (  
+  mail: FormDataEntryValue | null,
+  password: FormDataEntryValue | null
+  ) => {
   const url = `http://localhost:3000/user/login`;
-
 
   try {
     const response = await publicAxios.post(url, {

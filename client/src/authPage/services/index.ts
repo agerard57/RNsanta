@@ -1,1 +1,1 @@
-export { getLogin } from "./login.service";
+export { postLogin } from "./login.service";
