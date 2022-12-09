@@ -8,3 +8,5 @@ export {
   PageTitle,
 } from "./components";
 export { publicAxios } from "./services";
+
+export { avatarBuilder } from "./helpers";
