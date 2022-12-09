@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "transparent",
+    overflow: "hidden",
   },
   title: {
     alignItems: "center",
