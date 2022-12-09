@@ -1,32 +1,36 @@
 import React, { FC, useContext } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import { Container, PageTitle } from "../../core";
 import { ThemeContext, ThemeType } from "../../theme";
+import { useClockPage } from "../hooks";
+import { CustomText } from "./CustomText";
+import { DaysDisplay } from "./DaysDisplay";
+import { TimerDisplay } from "./TimerDisplay";
 
 export const ClockPage: FC = () => {
   const theme = useContext(ThemeContext);
 
-  const christmas = new Date("December 25, 2020 00:00:00").getTime();
-  const now = new Date().getTime();
-  const distance = christmas - now;
-
-  const countdown = () => {
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  };
+  const { countdown } = useClockPage();
 
   return (
     <View style={styles().page}>
-      <PageTitle additionalStyling={styles().addButton} title="Home" />
+      <PageTitle
+        additionalStyling={styles().title}
+        title="Christmas countdown"
+      />
       <Container additionalStyling={styles().clock}>
-        <Text>{countdown()}</Text>
+        <CustomText type="main" theme={theme}>
+          Countdown before Santa Claus comes down your chimney!
+        </CustomText>
+        <DaysDisplay days={countdown.days} />
+        <TimerDisplay
+          {...{
+            hours: countdown.hours,
+            minutes: countdown.minutes,
+            seconds: countdown.seconds,
+          }}
+        />
       </Container>
     </View>
   );
@@ -41,7 +45,7 @@ const styles = (theme?: ThemeType) =>
       justifyContent: "center",
       backgroundColor: "transparent",
     },
-    addButton: {
+    title: {
       alignItems: "center",
       justifyContent: "center",
       width: "100%",
@@ -49,17 +53,11 @@ const styles = (theme?: ThemeType) =>
       paddingBottom: 16,
       padding: 0,
     },
-    addButtonText: {
-      fontSize: 24,
-      fontFamily: theme && theme.fonts.extraBold,
-      color: theme && theme.colors.black,
-    },
     clock: {
       width: "100%",
       borderRadius: 39,
       marginBottom: 56,
-      padding: 0,
-      paddingHorizontal: 20,
+      padding: 30,
       overflow: "hidden",
     },
   });

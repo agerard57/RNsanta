@@ -1,0 +1,1 @@
+export { useClockPage } from "./useClockPage";
