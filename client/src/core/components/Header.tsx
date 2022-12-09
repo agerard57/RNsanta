@@ -1,7 +1,14 @@
-import React, { FC, useContext } from "react";
-import { Text, View, Image, StyleSheet, TouchableWithoutFeedback } from "react-native";
-import { ThemeContext, ThemeType } from "../../theme";
 import { useNavigation } from "@react-navigation/native";
+import React, { FC, useContext } from "react";
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from "react-native";
+
+import { ThemeContext, ThemeType } from "../../theme";
 
 export const Header: FC = (props) => {
   const theme = useContext(ThemeContext);
@@ -11,18 +18,21 @@ export const Header: FC = (props) => {
     <View style={styles().headerContainer}>
       <Text style={styles(theme).pageTitle}>Santa's Hood</Text>
       <TouchableWithoutFeedback
-        onPress={() => {navigation.navigate("Login")}}></TouchableWithoutFeedback>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <Text style={styles(theme).userName}>Padoru</Text>
-        <Image
-          source={{
-            // We use a placeholder image here, this'll be replaced with a user's profile picture later on
-            uri: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/4236d1d9-6a66-4488-ab28-bf744b693173/ddn54uv-2d9156a6-6e13-45f4-a2f5-e0c8fb637418.jpg",
-          }}
-          style={styles().profilePic}
-        />
-      </View>
-            </TouchableWithoutFeedback>
+        onPress={() => {
+          navigation.navigate("Login");
+        }}
+      >
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Text style={styles(theme).userName}>Padoru</Text>
+          <Image
+            source={{
+              // We use a placeholder image here, this'll be replaced with a user's profile picture later on
+              uri: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/4236d1d9-6a66-4488-ab28-bf744b693173/ddn54uv-2d9156a6-6e13-45f4-a2f5-e0c8fb637418.jpg",
+            }}
+            style={styles().profilePic}
+          />
+        </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 };
