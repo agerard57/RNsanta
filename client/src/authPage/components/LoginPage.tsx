@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { FC, useContext } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
@@ -8,7 +7,6 @@ import { useLoginPage } from "../hooks/useLoginPage";
 
 export const LoginPage: FC = () => {
   const theme = useContext(ThemeContext);
-  const navigation = useNavigation();
 
   const { userValue, setUserValue, handleSubmit } = useLoginPage();
 
