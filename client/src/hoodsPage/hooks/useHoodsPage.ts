@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { getHoodsList } from "../services";
 import { HoodsType } from "../types";
 
-type useHoodsPageManager = (userId: string) => {
+type UseHoodsPageManager = (userId: string) => {
   hoods: HoodsType[];
 };
 
-export const useHoodsPage: useHoodsPageManager = (userId) => {
+export const useHoodsPage: UseHoodsPageManager = (userId) => {
   const [hoods, setHoods] = useState<HoodsType[] | []>([]);
 
   useEffect(() => {

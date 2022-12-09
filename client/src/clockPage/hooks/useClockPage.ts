@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { timeWithLeadingZero } from "../helpers";
 import { Countdown } from "../types";
 
-type useClockPageManager = () => {
+type UseClockPageManager = () => {
   countdown: Countdown;
 };
 
-export const useClockPage: useClockPageManager = () => {
+export const useClockPage: UseClockPageManager = () => {
   const startDate = new Date();
   const christmasDay =
     new Date().getMonth() === 11 && new Date().getDate() > 25
