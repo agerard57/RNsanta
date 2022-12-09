@@ -7,6 +7,8 @@ declare global {
 export type RootTabParamList = {
   Home: undefined;
   Hoods: undefined;
+  Login: undefined;
+  Register: undefined;
   Clock: undefined;
   HoodDetails: { id: string };
   //"todo-edit": { id: string };
