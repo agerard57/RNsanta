@@ -1,11 +1,14 @@
 import React, { FC, useContext } from "react";
 import { Text, View, Image } from "react-native";
+import { useAuth } from "../../authPages";
 
 import { Container } from "../../core";
 import { ThemeContext } from "../../theme";
+import { SantaImg } from "../assets";
 
 export const HomePage: FC = () => {
   const theme = useContext(ThemeContext);
+  const { isUserLogged, user } = useAuth();
 
   return (
     <View
@@ -25,8 +28,7 @@ export const HomePage: FC = () => {
       >
         <Image
           source={{
-            // This is a placeholder image for now
-            uri: "https://cdn.discordapp.com/attachments/645576865850982420/1050042119475179532/6111414.png",
+            uri: SantaImg,
           }}
           style={{
             width: "100%",
@@ -49,7 +51,8 @@ export const HomePage: FC = () => {
             paddingBottom: 33,
           }}
         >
-          Welcome to Santa’s Hood, Parodu!
+          Welcome to Santa’s Hood
+          {isUserLogged ? `, ${user.name.firstName}!` : ""}
         </Text>
         <Text
           style={{

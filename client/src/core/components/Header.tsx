@@ -7,27 +7,29 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from "react-native";
+import { useAuth } from "../../authPages";
 
 import { ThemeContext, ThemeType } from "../../theme";
+import { avatarBuilder } from "../helpers";
 
 export const Header: FC = (props) => {
   const theme = useContext(ThemeContext);
   const navigation = useNavigation();
+  const { user, isUserLogged, logOut } = useAuth();
 
   return (
     <View style={styles().headerContainer}>
       <Text style={styles(theme).pageTitle}>Santa's Hood</Text>
       <TouchableWithoutFeedback
         onPress={() => {
-          navigation.navigate("Login");
+          isUserLogged ? logOut() : navigation.navigate("Login");
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text style={styles(theme).userName}>Padoru</Text>
+          <Text style={styles(theme).userName}>{user.name.firstName}</Text>
           <Image
             source={{
-              // We use a placeholder image here, this'll be replaced with a user's profile picture later on
-              uri: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/4236d1d9-6a66-4488-ab28-bf744b693173/ddn54uv-2d9156a6-6e13-45f4-a2f5-e0c8fb637418.jpg",
+              uri: avatarBuilder(user.profilePicNumber),
             }}
             style={styles().profilePic}
           />
