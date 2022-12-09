@@ -12,14 +12,14 @@ export const TimerDisplay: FC<Omit<Countdown, "days">> = ({
 }) => {
   const theme = useContext(ThemeContext);
   return (
-    <View style={styles(theme).timerContainer}>
-      <View style={styles(theme).timerRow}>
+    <View style={styles().timerContainer}>
+      <View style={styles().timerRow}>
         {["HH", "MM", "SS"].map((time, index) => (
           <CustomText
             type="timerSmall"
             theme={theme}
             key={index}
-            additionalStyling={styles(theme).timerText}
+            additionalStyling={styles().timerText}
           >
             {time}
           </CustomText>
@@ -32,7 +32,7 @@ export const TimerDisplay: FC<Omit<Countdown, "days">> = ({
               type="timer"
               theme={theme}
               key={index}
-              additionalStyling={styles(theme).separator}
+              additionalStyling={styles().separator}
             >
               {time}
             </CustomText>
@@ -48,7 +48,7 @@ export const TimerDisplay: FC<Omit<Countdown, "days">> = ({
   );
 };
 
-const styles = (theme: ThemeType) =>
+const styles = (theme?: ThemeType) =>
   StyleSheet.create({
     timerContainer: {
       position: "absolute",
