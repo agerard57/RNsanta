@@ -10,6 +10,8 @@ export const LinkingConfiguration: LinkingOptions<RootTabParamList> = {
       Home: "home",
       Hoods: "hoods",
       Clock: "clock",
+      Login: "login",
+      Register: "register",
       HoodDetails: "hood/:id",
     },
   },
