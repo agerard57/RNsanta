@@ -1,9 +1,16 @@
 import React, { FC, useContext } from "react";
-import { View, StyleSheet, Button } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Button,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from "react-native";
 import { ThemeContext } from "../../../theme/contexts";
 import { NavbarBackground } from "./NavbarBackground";
 import { ThemeType } from "../../../theme";
 import { useNavigation } from "@react-navigation/native";
+import { NavbarIcons } from "../../assets";
 
 export const Navbar: FC = () => {
   const theme = useContext(ThemeContext);
@@ -14,13 +21,13 @@ export const Navbar: FC = () => {
       <View
         style={[styles({ size: 42, theme }).commonButtonBg, { left: "25%" }]}
       >
-        <Button
+        <TouchableOpacity
           onPress={() => {
             navigation.navigate("Hoods");
           }}
-          title="H"
-          color="transparent"
-        />
+        >
+          <NavbarIcons.filled.Home />
+        </TouchableOpacity>
       </View>
       <View
         style={[
@@ -28,24 +35,24 @@ export const Navbar: FC = () => {
           { marginLeft: "auto", marginRight: "auto", left: 0, right: 0 },
         ]}
       >
-        <Button
+        <TouchableOpacity
           onPress={() => {
             navigation.navigate("Hoods");
           }}
-          title="G"
-          color="transparent"
-        />
+        >
+          <NavbarIcons.filled.Hood />
+        </TouchableOpacity>
       </View>
       <View
         style={[styles({ size: 42, theme }).commonButtonBg, { right: "25%" }]}
       >
-        <Button
+        <TouchableOpacity
           onPress={() => {
             navigation.navigate("Hoods");
           }}
-          title="C"
-          color="transparent"
-        />
+        >
+          <NavbarIcons.filled.Clock />
+        </TouchableOpacity>
       </View>
       <NavbarBackground />
     </>
