@@ -11,10 +11,14 @@ module.exports = function (app) {
       checkLogin.checkUserExistsAndValidPassword
     ], userController.login);
 
-  // GET all users / POST new user
+  // GET all users
   app
     .route("/users")
     .get(userController.getAll)
+  
+  // POST new user
+  app
+    .route("/user")
     .post(userController.add);
 
   // GET user by id
