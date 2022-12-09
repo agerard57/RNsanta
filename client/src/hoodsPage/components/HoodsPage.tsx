@@ -1,5 +1,6 @@
 import React, { FC, useContext } from "react";
 import { Text, View, FlatList, StyleSheet } from "react-native";
+
 import { Container, TopButton } from "../../core";
 import { ThemeContext, ThemeType } from "../../theme";
 import { useHoodsPage } from "../hooks";

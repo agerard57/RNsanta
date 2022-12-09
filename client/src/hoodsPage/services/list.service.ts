@@ -1,5 +1,4 @@
 import { publicAxios } from "../../core";
-
 import type { HoodsType } from "../types";
 
 export const getHoodsList = async (id: string) => {

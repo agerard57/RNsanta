@@ -1,5 +1,6 @@
 import React, { FC, useContext } from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
+
 import { ThemeContext, ThemeType } from "../../theme";
 
 export const Header: FC = (props) => {

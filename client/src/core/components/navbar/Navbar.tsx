@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { FC, useContext } from "react";
 import {
   View,
@@ -6,11 +7,11 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from "react-native";
-import { ThemeContext } from "../../../theme/contexts";
-import { NavbarBackground } from "./NavbarBackground";
+
 import { ThemeType } from "../../../theme";
-import { useNavigation } from "@react-navigation/native";
+import { ThemeContext } from "../../../theme/contexts";
 import { NavbarIcons } from "../../assets";
+import { NavbarBackground } from "./NavbarBackground";
 import { TouchableIcon } from "./TouchableIcon";
 
 export const Navbar: FC = () => {

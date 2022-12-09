@@ -1,5 +1,6 @@
 import React, { FC, useContext } from "react";
 import { StyleSheet, StyleProp, ViewStyle, Text, View } from "react-native";
+
 import { ThemeContext, ThemeType } from "../../theme";
 import { Container } from "./Container";
 

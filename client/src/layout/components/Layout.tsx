@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+
 import { Header, Navbar, RedBackground } from "../../core";
 
 type Props = {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { getHoodsList } from "../services";
 import { HoodsType } from "../types";
 

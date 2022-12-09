@@ -1,5 +1,6 @@
 import { FC, ReactNode, useContext } from "react";
 import { StyleProp, View, ViewStyle, StyleSheet } from "react-native";
+
 import { ThemeContext, ThemeType } from "../../theme";
 
 type Props = {

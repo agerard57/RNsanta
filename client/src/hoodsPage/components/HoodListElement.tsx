@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { FC, useContext } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+
 import { ThemeContext, ThemeType } from "../../theme";
 import { HoodsType } from "../types";
 

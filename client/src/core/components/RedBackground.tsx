@@ -1,6 +1,6 @@
+import { LinearGradient } from "expo-linear-gradient";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 
 export const RedBackground: FC = () => (
   <LinearGradient colors={["#F7484C", "#F17A7C"]} style={styles.container} />

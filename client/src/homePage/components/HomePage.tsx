@@ -1,5 +1,6 @@
 import React, { FC, useContext } from "react";
 import { Text, View, Image } from "react-native";
+
 import { Container } from "../../core";
 import { ThemeContext } from "../../theme";
 
