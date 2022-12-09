@@ -19,16 +19,16 @@ const UserSchema = mongoose.Schema(
     },
     mail: {
       type: String,
-      required: true
+      required: true,
     },
     password: {
       type: String,
-      required: true
+      required: true,
     },
     profilePicNumber: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   { toJSON: { getters: true } }
 );

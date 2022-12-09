@@ -1,7 +1,23 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Text, View, Image } from "react-native";
+import { getHoodsList } from "../services";
+import type { HoodsType } from "../types";
 
 export const HoodsPage: FC = () => {
+  const [hoods, setHoods] = useState<HoodsType[] | []>([
+    {
+      name: "Deez",
+      hexColor: "#F7484C",
+      nbMembers: 2,
+    },
+  ]);
+
+  useEffect(() => {
+    getHoodsList("6391ee3458827b959ba18363").then((hoods) => {
+      setHoods(hoods);
+    });
+  }, []);
+
   return (
     <View
       style={{
@@ -12,15 +28,13 @@ export const HoodsPage: FC = () => {
         backgroundColor: "transparent",
       }}
     >
-      <Image
-        source={{
-          uri: "https://cdn.discordapp.com/attachments/645576865850982420/1050042119475179532/6111414.png",
-        }}
-        style={{
-          width: 400,
-          height: 200,
-        }}
-      />
+      {hoods.map((hood, key) => (
+        <View key={key}>
+          <Text>{hood.name}</Text>
+          <Text>{hood.hexColor}</Text>
+          <Text>{hood.nbMembers}</Text>
+        </View>
+      ))}
     </View>
   );
 };

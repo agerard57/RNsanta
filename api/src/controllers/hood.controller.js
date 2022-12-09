@@ -4,19 +4,27 @@ const hoodOptions = (request) => {
   return {
     name: request.name,
     hexColor: request.hexColor,
-    gifts: [{
-      userId: request.userId,
-    }], 
-  }
-}
+    gifts: [
+      {
+        userId: request.userId,
+      },
+    ],
+  };
+};
 
 // /////////////////////
 // Get all hoods by userId controller
 exports.getAllHoodsByUserId = (req, res) => {
   const userId = req.params.id;
-
-  HoodModel.find({ "gifts.userId": userId }).then((hoods) => {
-    res.status.json(hoods);
+  HoodModel.find(
+    { "gifts.userId": userId },
+    {
+      name: 1,
+      hexColor: 1,
+      nbMembers: { $size: "$gifts" },
+    }
+  ).then((hoods) => {
+    res.status(200).json(hoods);
   });
 };
 
@@ -25,9 +33,12 @@ exports.getAllHoodsByUserId = (req, res) => {
 exports.getHoodById = (req, res) => {
   const hoodId = req.params.id;
 
-  HoodModel.findById(hoodId).populate("gifts.userId").populate("gifts.gift").then((hood) => {
-    res.json(hood);
-  });
+  HoodModel.findById(hoodId)
+    .populate("gifts.userId")
+    .populate("gifts.gift")
+    .then((hood) => {
+      res.json(hood);
+    });
 };
 
 // //////////////////
@@ -54,4 +65,3 @@ exports.updateHood = (req, res) => {
     res.json("Your hood has been updated!");
   });
 };
-
