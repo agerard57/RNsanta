@@ -1,1 +1,1 @@
-export type { LoginType } from "./LoginType";
+export type { InputLoginType, LoginType } from "./LoginType";

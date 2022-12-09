@@ -1,3 +1,8 @@
+export type InputLoginType = {
+  mail: string,
+  password: string,
+};
+
 export type LoginType = {
   id: string,
   name: {
