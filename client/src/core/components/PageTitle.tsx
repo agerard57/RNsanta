@@ -14,7 +14,7 @@ export const PageTitle: FC<Props> = ({ title, additionalStyling }) => {
 
   return (
     <View style={additionalStyling}>
-      <Container additionalStyling={[additionalStyling, { paddingTop: 16 }]}>
+      <Container additionalStyling={[additionalStyling, styles().container]}>
         <Text style={styles(theme).textTitle}>{title}</Text>
       </Container>
     </View>
@@ -23,6 +23,12 @@ export const PageTitle: FC<Props> = ({ title, additionalStyling }) => {
 
 const styles = (theme?: ThemeType) =>
   StyleSheet.create({
+    container: {
+      paddingTop: 16,
+      borderRadius: 0,
+      width: "110%",
+      position: "relative",
+    },
     textTitle: {
       fontSize: 24,
       fontFamily: theme && theme.fonts.extraBold,

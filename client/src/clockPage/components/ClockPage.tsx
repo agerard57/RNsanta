@@ -1,13 +1,12 @@
 import React, { FC, useContext } from "react";
-import { Text, View, FlatList, StyleSheet } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
-import { Container, PageTitle, TopButton } from "../../core";
+import { Container, PageTitle } from "../../core";
 import { ThemeContext, ThemeType } from "../../theme";
 
 export const ClockPage: FC = () => {
   const theme = useContext(ThemeContext);
 
-  // cowntdown to Christmas
   const christmas = new Date("December 25, 2020 00:00:00").getTime();
   const now = new Date().getTime();
   const distance = christmas - now;
