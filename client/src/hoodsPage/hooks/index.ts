@@ -1,0 +1,1 @@
+export { useHoodsPage } from "./useHoodsPage";

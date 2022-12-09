@@ -1,40 +1,79 @@
-import React, { FC, useEffect, useState } from "react";
-import { Text, View, Image } from "react-native";
-import { getHoodsList } from "../services";
-import type { HoodsType } from "../types";
+import React, { FC, useContext } from "react";
+import { Text, View, FlatList, StyleSheet } from "react-native";
+import { Container, TopButton } from "../../core";
+import { ThemeContext, ThemeType } from "../../theme";
+import { useHoodsPage } from "../hooks";
+import { HoodListElement } from "./HoodListElement";
 
 export const HoodsPage: FC = () => {
-  const [hoods, setHoods] = useState<HoodsType[] | []>([
-    {
-      name: "Deez",
-      hexColor: "#F7484C",
-      nbMembers: 2,
-    },
-  ]);
+  const { hoods } = useHoodsPage();
+  const theme = useContext(ThemeContext);
 
-  useEffect(() => {
-    getHoodsList("6391ee3458827b959ba18363").then((hoods) => {
-      setHoods(hoods);
-    });
-  }, []);
-
-  return (
+  const Separator: FC<{ theme: ThemeType }> = ({ theme }) => (
     <View
       style={{
-        paddingHorizontal: 16,
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "transparent",
+        height: 1,
+        width: "100%",
+        backgroundColor: theme.colors.grey,
       }}
-    >
-      {hoods.map((hood, key) => (
-        <View key={key}>
-          <Text>{hood.name}</Text>
-          <Text>{hood.hexColor}</Text>
-          <Text>{hood.nbMembers}</Text>
-        </View>
-      ))}
+    />
+  );
+
+  return (
+    <View style={styles().page}>
+      <TopButton additionalStyling={styles().addButton} route={"Home"}>
+        <Text style={styles(theme).addButtonText}>Make a new hood</Text>
+      </TopButton>
+      <Container additionalStyling={styles().hoodList}>
+        <FlatList
+          style={styles().flatList}
+          data={hoods}
+          renderItem={({ item }) => <HoodListElement hood={item} />}
+          keyExtractor={(item) => item.name}
+          ItemSeparatorComponent={() => <Separator theme={theme} />}
+        />
+      </Container>
     </View>
   );
 };
+
+const styles = (theme?: ThemeType) =>
+  StyleSheet.create({
+    page: {
+      paddingHorizontal: 16,
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "transparent",
+    },
+    addButton: {
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      borderRadius: 39,
+      paddingVertical: 16,
+      padding: 0,
+    },
+    addButtonText: {
+      fontSize: 24,
+      fontFamily: theme && theme.fonts.extraBold,
+      color: theme && theme.colors.black,
+    },
+    flatList: {
+      width: "100%",
+      paddingVertical: 20,
+    },
+    hoodList: {
+      width: "100%",
+      borderRadius: 39,
+      marginBottom: 56,
+      padding: 0,
+      paddingHorizontal: 20,
+      overflow: "hidden",
+    },
+    separator: {
+      height: 1,
+      width: "100%",
+      backgroundColor: theme && theme.colors.grey,
+    },
+  });

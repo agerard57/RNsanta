@@ -1,2 +1,8 @@
-export { Header, Navbar, RedBackground, Container } from "./components";
+export {
+  Header,
+  Navbar,
+  RedBackground,
+  Container,
+  TopButton,
+} from "./components";
 export { publicAxios } from "./services";

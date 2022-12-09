@@ -1,1 +1,1 @@
-export { RootTabParamList } from "./RootTypes";
+export type { RootTabParamList } from "./RootTypes";

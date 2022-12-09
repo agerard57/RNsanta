@@ -7,6 +7,7 @@ export const theme: ThemeType = {
     cream: "#fffaee",
     white: "#f4f4f4",
     metallic: "#e7e7e7",
+    grey: "#8b8b8b",
     black: "#302f36",
   },
   fonts: {
