@@ -24,8 +24,6 @@ const HoodSchema = mongoose.Schema(
   { toJSON: { getters: true } }
 );
 
-HoodSchema.index({ id: 1 }, { unique: true });
-
 const HoodModel = mongoose.model("hood", HoodSchema);
 
 module.exports = HoodModel;
